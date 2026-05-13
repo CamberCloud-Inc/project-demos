@@ -1,0 +1,798 @@
+[
+    {
+      "role": "assistant",
+      "content": "## 🚢 Titanic Survival Analysis Complete!\n\nI've conducted a comprehensive and interesting analysis of the Titanic dataset with several fascinating insights:\n\n### 🔍 **Key Discoveries:**\n\n1. **Gender was the strongest survival predictor** - Women had a **3.9x higher survival rate** (74.2%) than men (19.0%)\n\n2. **Social class mattered significantly** - 1st class passengers had **2.6x better survival odds** (63.0%) compared to 3rd class (24.4%)\n\n3. **\"Women and children first\" was real** - Children had **1.5x higher survival rate** (54.4%) than adults (37.3%)\n\n4. **Family size was crucial** - Small families (2-4 people) had **1.9x better survival** (57.9%) than solo travelers (30.6%), but large families struggled (16.1%)\n\n5. **Age categories revealed patterns** - Seniors had the lowest survival rate (19.2%), while children fared best\n\n### 📊 **Statistical Validation:**\n- All major factors (gender, class) showed **statistically significant** relationships with survival (p \u003c 0.001)\n- Overall survival rate: **38.6%** (342 out of 887 passengers)\n\n### 🎨 **Visualizations Created:**\n- **Survival analysis charts** showing rates by gender, class, age, and fare\n- **Advanced heatmaps** revealing gender-class interactions\n- **Family size analysis** with interesting survival patterns\n- **Age vs Fare scatter plot** colored by survival status\n\n### 💾 **Files Generated:**\n- `survival_analysis.png` - Main survival factor charts\n- `advanced_analysis.png` - Complex relationship visualizations  \n- `titanic_survival_summary.csv` - Complete statistical summary\n\nThe analysis reveals that survival on the Titanic was heavily influenced by social factors (gender, class) and family dynamics, providing a data-driven view of this historic tragedy!",
+      "parts": [
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "agent_orchestrator_tool_fe697ade-83db-41fe-bfe2-564cd9877f5c",
+            "tool_name": "agent_orchestrator_tool",
+            "result": {
+              "agent_id": null,
+              "structured_output": false,
+              "context_agent_name": "CodingAgent"
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "jupyter_start_server_94709572-6e30-4912-a458-3f46925a1b6f",
+            "tool_name": "jupyter_start_server",
+            "result": {
+              "is_jupyter_server_running": true
+            }
+          }
+        },
+        {
+          "type": "text",
+          "text": "I'll help you perform an interesting Titanic survival analysis! Let me start by checking what files are available in your workspace and then load the Titanic dataset.Let me check if the titanic.csv file is in your home directory:Perfect! I can see the titanic.csv file in your home directory. Now let me start the analysis by importing the necessary libraries and loading the data."
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_lOAj00qOfJhhZnEcTkykFa_annotation",
+            "tool_name": "generate_markdown",
+            "result": {
+              "action": "append",
+              "cell_index": null,
+              "markdown_content": "# Titanic Survival Analysis\n\n## 1. Import Libraries and Load Data"
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "auto_append_markdown_cell_9485691d-5c0f-4295-a448-8d9ee49e8ea8_a",
+            "tool_name": "append_markdown_cell",
+            "result": {
+              "status": "success",
+              "metadata": {
+                "source": "# Titanic Survival Analysis\n\n## 1. Import Libraries and Load Data",
+                "cell_index": 0,
+                "notebook_path": "project-demos/Titanic Survival Analysis/main.ipynb",
+                "original_source": null,
+                "link_tool_call_id": "tooluse_lOAj00qOfJhhZnEcTkykFa_annotation"
+              }
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_O9XYfaw15rOI3VpLD5BTch_annotation",
+            "tool_name": "generate_code",
+            "result": {
+              "code": "import pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom IPython.display import display\nimport warnings\nwarnings.filterwarnings('ignore')\n\n# Set style for better plots\nplt.style.use('seaborn-v0_8')\nsns.set_palette(\"husl\")\n\n# Load the Titanic dataset\ndf = pd.read_csv('~/titanic.csv')\n\nprint(f\"Dataset shape: {df.shape}\")\nprint(f\"Missing values: {df.isnull().sum().sum()}\")\ndisplay(df.head())",
+              "action": "append",
+              "cell_index": null,
+              "programing_language": "Python"
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_DVCw9B6ToGH4p29jx7PVPG_annotation",
+            "tool_name": "append_code_cell",
+            "result": {
+              "status": "success",
+              "outputs": [
+                {
+                  "data": "Dataset shape: (887, 8)\nMissing values: 0\n",
+                  "type": "text"
+                },
+                {
+                  "data": {
+                    "data": [
+                      [
+                        "0",
+                        "3",
+                        "Mr. Owen Harris Braund",
+                        "male",
+                        "22.0",
+                        "1",
+                        "0",
+                        "7.2500"
+                      ],
+                      [
+                        "1",
+                        "1",
+                        "Mrs. John Bradley (Florence Briggs Thayer) Cum...",
+                        "female",
+                        "38.0",
+                        "1",
+                        "0",
+                        "71.2833"
+                      ],
+                      [
+                        "1",
+                        "3",
+                        "Miss. Laina Heikkinen",
+                        "female",
+                        "26.0",
+                        "0",
+                        "0",
+                        "7.9250"
+                      ],
+                      [
+                        "1",
+                        "1",
+                        "Mrs. Jacques Heath (Lily May Peel) Futrelle",
+                        "female",
+                        "35.0",
+                        "1",
+                        "0",
+                        "53.1000"
+                      ],
+                      [
+                        "0",
+                        "3",
+                        "Mr. William Henry Allen",
+                        "male",
+                        "35.0",
+                        "0",
+                        "0",
+                        "8.0500"
+                      ]
+                    ],
+                    "columns": [
+                      "Survived",
+                      "Pclass",
+                      "Name",
+                      "Sex",
+                      "Age",
+                      "Siblings/Spouses Aboard",
+                      "Parents/Children Aboard",
+                      "Fare"
+                    ]
+                  },
+                  "type": "table"
+                }
+              ],
+              "metadata": {
+                "code": "import pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom IPython.display import display\nimport warnings\nwarnings.filterwarnings('ignore')\n\n# Set style for better plots\nplt.style.use('seaborn-v0_8')\nsns.set_palette(\"husl\")\n\n# Load the Titanic dataset\ndf = pd.read_csv('~/titanic.csv')\n\nprint(f\"Dataset shape: {df.shape}\")\nprint(f\"Missing values: {df.isnull().sum().sum()}\")\ndisplay(df.head())",
+                "cell_index": -1,
+                "notebook_path": "project-demos/Titanic Survival Analysis/main.ipynb",
+                "original_code": null,
+                "execution_count": 0,
+                "link_tool_call_id": "tooluse_O9XYfaw15rOI3VpLD5BTch_annotation",
+                "output_folder_path": "project-demos/Titanic Survival Analysis/outputs",
+                "programing_language": "Python"
+              }
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_tPIuWm3zV7RHsY67IjhQ5t_annotation",
+            "tool_name": "generate_markdown",
+            "result": {
+              "action": "append",
+              "cell_index": null,
+              "markdown_content": "## 2. Data Overview and Basic Statistics"
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_ADZp7h2Vzv8BV8hlIpj98z_annotation",
+            "tool_name": "append_markdown_cell",
+            "result": {
+              "status": "success",
+              "metadata": {
+                "source": "## 2. Data Overview and Basic Statistics",
+                "cell_index": 2,
+                "notebook_path": "project-demos/Titanic Survival Analysis/main.ipynb",
+                "original_source": null,
+                "link_tool_call_id": "tooluse_tPIuWm3zV7RHsY67IjhQ5t_annotation"
+              }
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_XoYuBEwvyFzcD7qRD4OPzq_annotation",
+            "tool_name": "generate_code",
+            "result": {
+              "code": "# Basic dataset information\nprint(\"=== DATASET INFO ===\")\ndisplay(df.info())\n\nprint(\"\\n=== SURVIVAL STATISTICS ===\")\nsurvival_stats = df['Survived'].value_counts()\nsurvival_rate = df['Survived'].mean()\nprint(f\"Overall Survival Rate: {survival_rate:.1%}\")\nprint(f\"Survivors: {survival_stats[1]} ({survival_stats[1]/len(df):.1%})\")\nprint(f\"Deaths: {survival_stats[0]} ({survival_stats[0]/len(df):.1%})\")\n\nprint(\"\\n=== NUMERICAL SUMMARY ===\")\ndisplay(df.describe())\n\nprint(\"\\n=== CATEGORICAL VARIABLES ===\")\ncategorical_cols = ['Pclass', 'Sex']\nfor col in categorical_cols:\n    print(f\"\\n{col}:\")\n    display(df[col].value_counts())",
+              "action": "append",
+              "cell_index": null,
+              "programing_language": "Python"
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_frUuX6OH7cuZLcluJhzRNG_annotation",
+            "tool_name": "append_code_cell",
+            "result": {
+              "status": "success",
+              "outputs": [
+                {
+                  "data": "=== DATASET INFO ===\n\u003cclass 'pandas.core.frame.DataFrame'\u003e\nRangeIndex: 887 entries, 0 to 886\nData columns (total 8 columns):\n #   Column                   Non-Null Count  Dtype  \n---  ------                   --------------  -----  \n 0   Survived                 887 non-null    int64  \n 1   Pclass                   887 non-null    int64  \n 2   Name                     887 non-null    object \n 3   Sex                      887 non-null    object \n 4   Age                      887 non-null    float64\n 5   Siblings/Spouses Aboard  887 non-null    int64  \n 6   Parents/Children Aboard  887 non-null    int64  \n 7   Fare                     887 non-null    float64\ndtypes: float64(2), int64(4), object(2)\nmemory usage: 55.6+ KB\n",
+                  "type": "text"
+                },
+                {
+                  "data": "\n=== SURVIVAL STATISTICS ===\nOverall Survival Rate: 38.6%\nSurvivors: 342 (38.6%)\nDeaths: 545 (61.4%)\n\n=== NUMERICAL SUMMARY ===\n",
+                  "type": "text"
+                },
+                {
+                  "data": {
+                    "data": [
+                      [
+                        "887.000000",
+                        "887.000000",
+                        "887.000000",
+                        "887.000000",
+                        "887.000000",
+                        "887.00000"
+                      ],
+                      [
+                        "0.385569",
+                        "2.305524",
+                        "29.471443",
+                        "0.525366",
+                        "0.383315",
+                        "32.30542"
+                      ],
+                      [
+                        "0.487004",
+                        "0.836662",
+                        "14.121908",
+                        "1.104669",
+                        "0.807466",
+                        "49.78204"
+                      ],
+                      [
+                        "0.000000",
+                        "1.000000",
+                        "0.420000",
+                        "0.000000",
+                        "0.000000",
+                        "0.00000"
+                      ],
+                      [
+                        "0.000000",
+                        "2.000000",
+                        "20.250000",
+                        "0.000000",
+                        "0.000000",
+                        "7.92500"
+                      ],
+                      [
+                        "0.000000",
+                        "3.000000",
+                        "28.000000",
+                        "0.000000",
+                        "0.000000",
+                        "14.45420"
+                      ],
+                      [
+                        "1.000000",
+                        "3.000000",
+                        "38.000000",
+                        "1.000000",
+                        "0.000000",
+                        "31.13750"
+                      ],
+                      [
+                        "1.000000",
+                        "3.000000",
+                        "80.000000",
+                        "8.000000",
+                        "6.000000",
+                        "512.32920"
+                      ]
+                    ],
+                    "columns": [
+                      "Survived",
+                      "Pclass",
+                      "Age",
+                      "Siblings/Spouses Aboard",
+                      "Parents/Children Aboard",
+                      "Fare"
+                    ]
+                  },
+                  "type": "table"
+                },
+                {
+                  "data": "\n=== CATEGORICAL VARIABLES ===\n\nPclass:\n",
+                  "type": "text"
+                },
+                {
+                  "data": "\nSex:\n",
+                  "type": "text"
+                }
+              ],
+              "metadata": {
+                "code": "# Basic dataset information\nprint(\"=== DATASET INFO ===\")\ndisplay(df.info())\n\nprint(\"\\n=== SURVIVAL STATISTICS ===\")\nsurvival_stats = df['Survived'].value_counts()\nsurvival_rate = df['Survived'].mean()\nprint(f\"Overall Survival Rate: {survival_rate:.1%}\")\nprint(f\"Survivors: {survival_stats[1]} ({survival_stats[1]/len(df):.1%})\")\nprint(f\"Deaths: {survival_stats[0]} ({survival_stats[0]/len(df):.1%})\")\n\nprint(\"\\n=== NUMERICAL SUMMARY ===\")\ndisplay(df.describe())\n\nprint(\"\\n=== CATEGORICAL VARIABLES ===\")\ncategorical_cols = ['Pclass', 'Sex']\nfor col in categorical_cols:\n    print(f\"\\n{col}:\")\n    display(df[col].value_counts())",
+                "cell_index": -1,
+                "notebook_path": "project-demos/Titanic Survival Analysis/main.ipynb",
+                "original_code": null,
+                "execution_count": 0,
+                "link_tool_call_id": "tooluse_XoYuBEwvyFzcD7qRD4OPzq_annotation",
+                "output_folder_path": "project-demos/Titanic Survival Analysis/outputs",
+                "programing_language": "Python"
+              }
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_fvVc9BQ81sgnT6uIGlTemO_annotation",
+            "tool_name": "generate_markdown",
+            "result": {
+              "action": "append",
+              "cell_index": null,
+              "markdown_content": "## 3. Survival Analysis by Key Factors"
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_Il1dTc6ARzQaH5hJJ9rQNY_annotation",
+            "tool_name": "append_markdown_cell",
+            "result": {
+              "status": "success",
+              "metadata": {
+                "source": "## 3. Survival Analysis by Key Factors",
+                "cell_index": 4,
+                "notebook_path": "project-demos/Titanic Survival Analysis/main.ipynb",
+                "original_source": null,
+                "link_tool_call_id": "tooluse_fvVc9BQ81sgnT6uIGlTemO_annotation"
+              }
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_CA4tHI8fOkldFQdZNK3DT9_annotation",
+            "tool_name": "generate_code",
+            "result": {
+              "code": "# Create comprehensive survival analysis\nfig, axes = plt.subplots(2, 2, figsize=(15, 12))\nfig.suptitle('Titanic Survival Analysis by Key Factors', fontsize=16, fontweight='bold')\n\n# 1. Survival by Gender\ngender_survival = df.groupby('Sex')['Survived'].agg(['count', 'sum', 'mean']).round(3)\ngender_survival.columns = ['Total', 'Survivors', 'Survival_Rate']\nprint(\"=== SURVIVAL BY GENDER ===\")\ndisplay(gender_survival)\n\naxes[0,0].bar(gender_survival.index, gender_survival['Survival_Rate'], \n              color=['lightcoral', 'lightblue'], alpha=0.8)\naxes[0,0].set_title('Survival Rate by Gender', fontweight='bold')\naxes[0,0].set_ylabel('Survival Rate')\nfor i, v in enumerate(gender_survival['Survival_Rate']):\n    axes[0,0].text(i, v + 0.02, f'{v:.1%}', ha='center', fontweight='bold')\n\n# 2. Survival by Class\nclass_survival = df.groupby('Pclass')['Survived'].agg(['count', 'sum', 'mean']).round(3)\nclass_survival.columns = ['Total', 'Survivors', 'Survival_Rate']\nprint(\"\\n=== SURVIVAL BY CLASS ===\")\ndisplay(class_survival)\n\naxes[0,1].bar(class_survival.index, class_survival['Survival_Rate'], \n              color=['gold', 'orange', 'red'], alpha=0.8)\naxes[0,1].set_title('Survival Rate by Passenger Class', fontweight='bold')\naxes[0,1].set_ylabel('Survival Rate')\naxes[0,1].set_xlabel('Passenger Class')\nfor i, v in enumerate(class_survival['Survival_Rate']):\n    axes[0,1].text(i, v + 0.02, f'{v:.1%}', ha='center', fontweight='bold')\n\n# 3. Age Distribution by Survival\naxes[1,0].hist([df[df['Survived']==0]['Age'], df[df['Survived']==1]['Age']], \n               bins=20, alpha=0.7, label=['Died', 'Survived'], color=['red', 'green'])\naxes[1,0].set_title('Age Distribution by Survival Status', fontweight='bold')\naxes[1,0].set_xlabel('Age')\naxes[1,0].set_ylabel('Count')\naxes[1,0].legend()\n\n# 4. Fare Distribution by Survival\naxes[1,1].boxplot([df[df['Survived']==0]['Fare'], df[df['Survived']==1]['Fare']], \n                  labels=['Died', 'Survived'])\naxes[1,1].set_title('Fare Distribution by Survival Status', fontweight='bold')\naxes[1,1].set_ylabel('Fare (£)')\n\nplt.tight_layout()\nplt.savefig('./outputs/survival_analysis.png', dpi=300, bbox_inches='tight')\nplt.show()",
+              "action": "append",
+              "cell_index": null,
+              "programing_language": "Python"
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_mxMRbgQorx37y06vR3jH5f_annotation",
+            "tool_name": "append_code_cell",
+            "result": {
+              "status": "success",
+              "outputs": [
+                {
+                  "data": "=== SURVIVAL BY GENDER ===\n",
+                  "type": "text"
+                },
+                {
+                  "data": {
+                    "data": [
+                      [
+                        "314",
+                        "233",
+                        "0.742"
+                      ],
+                      [
+                        "573",
+                        "109",
+                        "0.190"
+                      ]
+                    ],
+                    "columns": [
+                      "Total",
+                      "Survivors",
+                      "Survival_Rate",
+                      "Sex",
+                      "",
+                      "",
+                      ""
+                    ]
+                  },
+                  "type": "table"
+                },
+                {
+                  "data": "\n=== SURVIVAL BY CLASS ===\n",
+                  "type": "text"
+                },
+                {
+                  "data": {
+                    "data": [
+                      [
+                        "216",
+                        "136",
+                        "0.630"
+                      ],
+                      [
+                        "184",
+                        "87",
+                        "0.473"
+                      ],
+                      [
+                        "487",
+                        "119",
+                        "0.244"
+                      ]
+                    ],
+                    "columns": [
+                      "Total",
+                      "Survivors",
+                      "Survival_Rate",
+                      "Pclass",
+                      "",
+                      "",
+                      ""
+                    ]
+                  },
+                  "type": "table"
+                },
+                {
+                  "data": "project-demos/Titanic Survival Analysis/outputs/survival_analysis.png",
+                  "type": "image"
+                }
+              ],
+              "metadata": {
+                "code": "# Create comprehensive survival analysis\nfig, axes = plt.subplots(2, 2, figsize=(15, 12))\nfig.suptitle('Titanic Survival Analysis by Key Factors', fontsize=16, fontweight='bold')\n\n# 1. Survival by Gender\ngender_survival = df.groupby('Sex')['Survived'].agg(['count', 'sum', 'mean']).round(3)\ngender_survival.columns = ['Total', 'Survivors', 'Survival_Rate']\nprint(\"=== SURVIVAL BY GENDER ===\")\ndisplay(gender_survival)\n\naxes[0,0].bar(gender_survival.index, gender_survival['Survival_Rate'], \n              color=['lightcoral', 'lightblue'], alpha=0.8)\naxes[0,0].set_title('Survival Rate by Gender', fontweight='bold')\naxes[0,0].set_ylabel('Survival Rate')\nfor i, v in enumerate(gender_survival['Survival_Rate']):\n    axes[0,0].text(i, v + 0.02, f'{v:.1%}', ha='center', fontweight='bold')\n\n# 2. Survival by Class\nclass_survival = df.groupby('Pclass')['Survived'].agg(['count', 'sum', 'mean']).round(3)\nclass_survival.columns = ['Total', 'Survivors', 'Survival_Rate']\nprint(\"\\n=== SURVIVAL BY CLASS ===\")\ndisplay(class_survival)\n\naxes[0,1].bar(class_survival.index, class_survival['Survival_Rate'], \n              color=['gold', 'orange', 'red'], alpha=0.8)\naxes[0,1].set_title('Survival Rate by Passenger Class', fontweight='bold')\naxes[0,1].set_ylabel('Survival Rate')\naxes[0,1].set_xlabel('Passenger Class')\nfor i, v in enumerate(class_survival['Survival_Rate']):\n    axes[0,1].text(i, v + 0.02, f'{v:.1%}', ha='center', fontweight='bold')\n\n# 3. Age Distribution by Survival\naxes[1,0].hist([df[df['Survived']==0]['Age'], df[df['Survived']==1]['Age']], \n               bins=20, alpha=0.7, label=['Died', 'Survived'], color=['red', 'green'])\naxes[1,0].set_title('Age Distribution by Survival Status', fontweight='bold')\naxes[1,0].set_xlabel('Age')\naxes[1,0].set_ylabel('Count')\naxes[1,0].legend()\n\n# 4. Fare Distribution by Survival\naxes[1,1].boxplot([df[df['Survived']==0]['Fare'], df[df['Survived']==1]['Fare']], \n                  labels=['Died', 'Survived'])\naxes[1,1].set_title('Fare Distribution by Survival Status', fontweight='bold')\naxes[1,1].set_ylabel('Fare (£)')\n\nplt.tight_layout()\nplt.savefig('./outputs/survival_analysis.png', dpi=300, bbox_inches='tight')\nplt.show()",
+                "cell_index": -1,
+                "notebook_path": "project-demos/Titanic Survival Analysis/main.ipynb",
+                "original_code": null,
+                "execution_count": 0,
+                "link_tool_call_id": "tooluse_CA4tHI8fOkldFQdZNK3DT9_annotation",
+                "output_folder_path": "project-demos/Titanic Survival Analysis/outputs",
+                "programing_language": "Python"
+              }
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_kz3RpoWdoJsJBJNJiQ1ow7_annotation",
+            "tool_name": "generate_markdown",
+            "result": {
+              "action": "append",
+              "cell_index": null,
+              "markdown_content": "## 4. Advanced Analysis: Family Size and Combined Factors"
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_ldEcUVyTof1VdHmbfSPpzw_annotation",
+            "tool_name": "append_markdown_cell",
+            "result": {
+              "status": "success",
+              "metadata": {
+                "source": "## 4. Advanced Analysis: Family Size and Combined Factors",
+                "cell_index": 6,
+                "notebook_path": "project-demos/Titanic Survival Analysis/main.ipynb",
+                "original_source": null,
+                "link_tool_call_id": "tooluse_kz3RpoWdoJsJBJNJiQ1ow7_annotation"
+              }
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_ZWs8sGxI7etTq8MjQGVGA8_annotation",
+            "tool_name": "generate_code",
+            "result": {
+              "code": "# Create family size feature\ndf['Family_Size'] = df['Siblings/Spouses Aboard'] + df['Parents/Children Aboard'] + 1\ndf['Family_Category'] = pd.cut(df['Family_Size'], \n                               bins=[0, 1, 4, 20], \n                               labels=['Alone', 'Small Family', 'Large Family'])\n\n# Age categories\ndf['Age_Category'] = pd.cut(df['Age'], \n                           bins=[0, 12, 18, 60, 100], \n                           labels=['Child', 'Teen', 'Adult', 'Senior'])\n\nfig, axes = plt.subplots(2, 2, figsize=(16, 12))\nfig.suptitle('Advanced Titanic Survival Analysis', fontsize=16, fontweight='bold')\n\n# 1. Family Size Analysis\nfamily_survival = df.groupby('Family_Category')['Survived'].agg(['count', 'sum', 'mean']).round(3)\nfamily_survival.columns = ['Total', 'Survivors', 'Survival_Rate']\nprint(\"=== SURVIVAL BY FAMILY SIZE ===\")\ndisplay(family_survival)\n\naxes[0,0].bar(family_survival.index, family_survival['Survival_Rate'], \n              color=['purple', 'green', 'orange'], alpha=0.8)\naxes[0,0].set_title('Survival Rate by Family Size', fontweight='bold')\naxes[0,0].set_ylabel('Survival Rate')\naxes[0,0].tick_params(axis='x', rotation=45)\nfor i, v in enumerate(family_survival['Survival_Rate']):\n    axes[0,0].text(i, v + 0.02, f'{v:.1%}', ha='center', fontweight='bold')\n\n# 2. Age Category Analysis\nage_survival = df.groupby('Age_Category')['Survived'].agg(['count', 'sum', 'mean']).round(3)\nage_survival.columns = ['Total', 'Survivors', 'Survival_Rate']\nprint(\"\\n=== SURVIVAL BY AGE CATEGORY ===\")\ndisplay(age_survival)\n\naxes[0,1].bar(age_survival.index, age_survival['Survival_Rate'], \n              color=['lightblue', 'yellow', 'red', 'gray'], alpha=0.8)\naxes[0,1].set_title('Survival Rate by Age Category', fontweight='bold')\naxes[0,1].set_ylabel('Survival Rate')\naxes[0,1].tick_params(axis='x', rotation=45)\nfor i, v in enumerate(age_survival['Survival_Rate']):\n    axes[0,1].text(i, v + 0.02, f'{v:.1%}', ha='center', fontweight='bold')\n\n# 3. Heatmap: Gender vs Class Survival\nsurvival_heatmap = df.pivot_table(values='Survived', index='Sex', columns='Pclass', aggfunc='mean')\nsns.heatmap(survival_heatmap, annot=True, fmt='.2%', cmap='RdYlGn', \n            ax=axes[1,0], cbar_kws={'label': 'Survival Rate'})\naxes[1,0].set_title('Survival Rate: Gender vs Class', fontweight='bold')\n\n# 4. Scatter: Age vs Fare colored by Survival\nscatter = axes[1,1].scatter(df['Age'], df['Fare'], c=df['Survived'], \n                           cmap='RdYlGn', alpha=0.6, s=30)\naxes[1,1].set_title('Age vs Fare (Colored by Survival)', fontweight='bold')\naxes[1,1].set_xlabel('Age')\naxes[1,1].set_ylabel('Fare (£)')\nplt.colorbar(scatter, ax=axes[1,1], label='Survived')\n\nplt.tight_layout()\nplt.savefig('./outputs/advanced_analysis.png', dpi=300, bbox_inches='tight')\nplt.show()",
+              "action": "append",
+              "cell_index": null,
+              "programing_language": "Python"
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_Ul27cTSNMbBFrI6WaW0pAS_annotation",
+            "tool_name": "append_code_cell",
+            "result": {
+              "status": "success",
+              "outputs": [
+                {
+                  "data": "=== SURVIVAL BY FAMILY SIZE ===\n",
+                  "type": "text"
+                },
+                {
+                  "data": {
+                    "data": [
+                      [
+                        "533",
+                        "163",
+                        "0.306"
+                      ],
+                      [
+                        "292",
+                        "169",
+                        "0.579"
+                      ],
+                      [
+                        "62",
+                        "10",
+                        "0.161"
+                      ]
+                    ],
+                    "columns": [
+                      "Total",
+                      "Survivors",
+                      "Survival_Rate",
+                      "Family_Category",
+                      "",
+                      "",
+                      ""
+                    ]
+                  },
+                  "type": "table"
+                },
+                {
+                  "data": "\n=== SURVIVAL BY AGE CATEGORY ===\n",
+                  "type": "text"
+                },
+                {
+                  "data": {
+                    "data": [
+                      [
+                        "79",
+                        "43",
+                        "0.544"
+                      ],
+                      [
+                        "87",
+                        "35",
+                        "0.402"
+                      ],
+                      [
+                        "695",
+                        "259",
+                        "0.373"
+                      ],
+                      [
+                        "26",
+                        "5",
+                        "0.192"
+                      ]
+                    ],
+                    "columns": [
+                      "Total",
+                      "Survivors",
+                      "Survival_Rate",
+                      "Age_Category",
+                      "",
+                      "",
+                      ""
+                    ]
+                  },
+                  "type": "table"
+                },
+                {
+                  "data": "project-demos/Titanic Survival Analysis/outputs/advanced_analysis.png",
+                  "type": "image"
+                }
+              ],
+              "metadata": {
+                "code": "# Create family size feature\ndf['Family_Size'] = df['Siblings/Spouses Aboard'] + df['Parents/Children Aboard'] + 1\ndf['Family_Category'] = pd.cut(df['Family_Size'], \n                               bins=[0, 1, 4, 20], \n                               labels=['Alone', 'Small Family', 'Large Family'])\n\n# Age categories\ndf['Age_Category'] = pd.cut(df['Age'], \n                           bins=[0, 12, 18, 60, 100], \n                           labels=['Child', 'Teen', 'Adult', 'Senior'])\n\nfig, axes = plt.subplots(2, 2, figsize=(16, 12))\nfig.suptitle('Advanced Titanic Survival Analysis', fontsize=16, fontweight='bold')\n\n# 1. Family Size Analysis\nfamily_survival = df.groupby('Family_Category')['Survived'].agg(['count', 'sum', 'mean']).round(3)\nfamily_survival.columns = ['Total', 'Survivors', 'Survival_Rate']\nprint(\"=== SURVIVAL BY FAMILY SIZE ===\")\ndisplay(family_survival)\n\naxes[0,0].bar(family_survival.index, family_survival['Survival_Rate'], \n              color=['purple', 'green', 'orange'], alpha=0.8)\naxes[0,0].set_title('Survival Rate by Family Size', fontweight='bold')\naxes[0,0].set_ylabel('Survival Rate')\naxes[0,0].tick_params(axis='x', rotation=45)\nfor i, v in enumerate(family_survival['Survival_Rate']):\n    axes[0,0].text(i, v + 0.02, f'{v:.1%}', ha='center', fontweight='bold')\n\n# 2. Age Category Analysis\nage_survival = df.groupby('Age_Category')['Survived'].agg(['count', 'sum', 'mean']).round(3)\nage_survival.columns = ['Total', 'Survivors', 'Survival_Rate']\nprint(\"\\n=== SURVIVAL BY AGE CATEGORY ===\")\ndisplay(age_survival)\n\naxes[0,1].bar(age_survival.index, age_survival['Survival_Rate'], \n              color=['lightblue', 'yellow', 'red', 'gray'], alpha=0.8)\naxes[0,1].set_title('Survival Rate by Age Category', fontweight='bold')\naxes[0,1].set_ylabel('Survival Rate')\naxes[0,1].tick_params(axis='x', rotation=45)\nfor i, v in enumerate(age_survival['Survival_Rate']):\n    axes[0,1].text(i, v + 0.02, f'{v:.1%}', ha='center', fontweight='bold')\n\n# 3. Heatmap: Gender vs Class Survival\nsurvival_heatmap = df.pivot_table(values='Survived', index='Sex', columns='Pclass', aggfunc='mean')\nsns.heatmap(survival_heatmap, annot=True, fmt='.2%', cmap='RdYlGn', \n            ax=axes[1,0], cbar_kws={'label': 'Survival Rate'})\naxes[1,0].set_title('Survival Rate: Gender vs Class', fontweight='bold')\n\n# 4. Scatter: Age vs Fare colored by Survival\nscatter = axes[1,1].scatter(df['Age'], df['Fare'], c=df['Survived'], \n                           cmap='RdYlGn', alpha=0.6, s=30)\naxes[1,1].set_title('Age vs Fare (Colored by Survival)', fontweight='bold')\naxes[1,1].set_xlabel('Age')\naxes[1,1].set_ylabel('Fare (£)')\nplt.colorbar(scatter, ax=axes[1,1], label='Survived')\n\nplt.tight_layout()\nplt.savefig('./outputs/advanced_analysis.png', dpi=300, bbox_inches='tight')\nplt.show()",
+                "cell_index": -1,
+                "notebook_path": "project-demos/Titanic Survival Analysis/main.ipynb",
+                "original_code": null,
+                "execution_count": 0,
+                "link_tool_call_id": "tooluse_ZWs8sGxI7etTq8MjQGVGA8_annotation",
+                "output_folder_path": "project-demos/Titanic Survival Analysis/outputs",
+                "programing_language": "Python"
+              }
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_5lBzWlQj0PUEE8mgQ9PCon_annotation",
+            "tool_name": "generate_markdown",
+            "result": {
+              "action": "append",
+              "cell_index": null,
+              "markdown_content": "## 5. Key Insights and Statistical Summary"
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_HCz0eTmqJWNDuepIjY3tFv_annotation",
+            "tool_name": "append_markdown_cell",
+            "result": {
+              "status": "success",
+              "metadata": {
+                "source": "## 5. Key Insights and Statistical Summary",
+                "cell_index": 8,
+                "notebook_path": "project-demos/Titanic Survival Analysis/main.ipynb",
+                "original_source": null,
+                "link_tool_call_id": "tooluse_5lBzWlQj0PUEE8mgQ9PCon_annotation"
+              }
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_HsSmXOhf2AoP9Vz0KFHU5j_annotation",
+            "tool_name": "generate_code",
+            "result": {
+              "code": "# Statistical tests and key insights\nfrom scipy.stats import chi2_contingency\n\nprint(\"🚢 TITANIC SURVIVAL ANALYSIS - KEY INSIGHTS\")\nprint(\"=\" * 60)\n\n# Overall statistics\ntotal_passengers = len(df)\nsurvivors = df['Survived'].sum()\nsurvival_rate = df['Survived'].mean()\n\nprint(f\"📊 OVERALL STATISTICS:\")\nprint(f\"   • Total Passengers: {total_passengers:,}\")\nprint(f\"   • Survivors: {survivors:,} ({survival_rate:.1%})\")\nprint(f\"   • Deaths: {total_passengers - survivors:,} ({1-survival_rate:.1%})\")\n\nprint(f\"\\n🔍 KEY FINDINGS:\")\n\n# Gender analysis\nfemale_survival = df[df['Sex'] == 'female']['Survived'].mean()\nmale_survival = df[df['Sex'] == 'male']['Survived'].mean()\nprint(f\"   • Women had {female_survival/male_survival:.1f}x higher survival rate than men\")\nprint(f\"     - Female survival: {female_survival:.1%}\")\nprint(f\"     - Male survival: {male_survival:.1%}\")\n\n# Class analysis\nclass_1_survival = df[df['Pclass'] == 1]['Survived'].mean()\nclass_3_survival = df[df['Pclass'] == 3]['Survived'].mean()\nprint(f\"   • 1st class passengers had {class_1_survival/class_3_survival:.1f}x higher survival rate than 3rd class\")\nprint(f\"     - 1st Class: {class_1_survival:.1%}\")\nprint(f\"     - 3rd Class: {class_3_survival:.1%}\")\n\n# Age analysis\nchild_survival = df[df['Age_Category'] == 'Child']['Survived'].mean()\nadult_survival = df[df['Age_Category'] == 'Adult']['Survived'].mean()\nprint(f\"   • Children had {child_survival/adult_survival:.1f}x higher survival rate than adults\")\nprint(f\"     - Children (0-12): {child_survival:.1%}\")\nprint(f\"     - Adults (18-60): {adult_survival:.1%}\")\n\n# Family size analysis\nsmall_family_survival = df[df['Family_Category'] == 'Small Family']['Survived'].mean()\nalone_survival = df[df['Family_Category'] == 'Alone']['Survived'].mean()\nprint(f\"   • Small families had {small_family_survival/alone_survival:.1f}x higher survival rate than solo travelers\")\nprint(f\"     - Small Family (2-4): {small_family_survival:.1%}\")\nprint(f\"     - Alone: {alone_survival:.1%}\")\n\n# Statistical significance tests\nprint(f\"\\n📈 STATISTICAL SIGNIFICANCE (Chi-square tests):\")\n\n# Gender vs Survival\nchi2_gender, p_gender, _, _ = chi2_contingency(pd.crosstab(df['Sex'], df['Survived']))\nprint(f\"   • Gender vs Survival: χ² = {chi2_gender:.2f}, p = {p_gender:.2e} {'✓ Significant' if p_gender \u003c 0.05 else '✗ Not significant'}\")\n\n# Class vs Survival\nchi2_class, p_class, _, _ = chi2_contingency(pd.crosstab(df['Pclass'], df['Survived']))\nprint(f\"   • Class vs Survival: χ² = {chi2_class:.2f}, p = {p_class:.2e} {'✓ Significant' if p_class \u003c 0.05 else '✗ Not significant'}\")\n\n# Create summary table\nprint(f\"\\n📋 SURVIVAL RATE SUMMARY TABLE:\")\nsummary_data = {\n    'Factor': ['Overall', 'Female', 'Male', '1st Class', '2nd Class', '3rd Class', \n               'Children', 'Teens', 'Adults', 'Seniors', 'Alone', 'Small Family', 'Large Family'],\n    'Count': [len(df), len(df[df['Sex']=='female']), len(df[df['Sex']=='male']),\n              len(df[df['Pclass']==1]), len(df[df['Pclass']==2]), len(df[df['Pclass']==3]),\n              len(df[df['Age_Category']=='Child']), len(df[df['Age_Category']=='Teen']), \n              len(df[df['Age_Category']=='Adult']), len(df[df['Age_Category']=='Senior']),\n              len(df[df['Family_Category']=='Alone']), len(df[df['Family_Category']=='Small Family']), \n              len(df[df['Family_Category']=='Large Family'])],\n    'Survival_Rate': [df['Survived'].mean(), df[df['Sex']=='female']['Survived'].mean(), \n                      df[df['Sex']=='male']['Survived'].mean(), df[df['Pclass']==1]['Survived'].mean(),\n                      df[df['Pclass']==2]['Survived'].mean(), df[df['Pclass']==3]['Survived'].mean(),\n                      df[df['Age_Category']=='Child']['Survived'].mean(), df[df['Age_Category']=='Teen']['Survived'].mean(),\n                      df[df['Age_Category']=='Adult']['Survived'].mean(), df[df['Age_Category']=='Senior']['Survived'].mean(),\n                      df[df['Family_Category']=='Alone']['Survived'].mean(), df[df['Family_Category']=='Small Family']['Survived'].mean(),\n                      df[df['Family_Category']=='Large Family']['Survived'].mean()]\n}\n\nsummary_df = pd.DataFrame(summary_data)\nsummary_df['Survival_Rate'] = summary_df['Survival_Rate'].round(3)\nsummary_df = summary_df.sort_values('Survival_Rate', ascending=False)\n\ndisplay(summary_df)\n\n# Save summary to file\nsummary_df.to_csv('./outputs/titanic_survival_summary.csv', index=False)\nprint(f\"\\n💾 Analysis saved to outputs folder!\")\nprint(f\"   • Charts: survival_analysis.png, advanced_analysis.png\")\nprint(f\"   • Data: titanic_survival_summary.csv\")",
+              "action": "append",
+              "cell_index": null,
+              "programing_language": "Python"
+            }
+          }
+        },
+        {
+          "type": "tool-invocation",
+          "tool_invocation": {
+            "state": "result",
+            "tool_call_id": "tooluse_WYCDB2QjJU0S1pHwcsbFEC_annotation",
+            "tool_name": "append_code_cell",
+            "result": {
+              "status": "success",
+              "outputs": [
+                {
+                  "data": "🚢 TITANIC SURVIVAL ANALYSIS - KEY INSIGHTS\n============================================================\n📊 OVERALL STATISTICS:\n   • Total Passengers: 887\n   • Survivors: 342 (38.6%)\n   • Deaths: 545 (61.4%)\n\n🔍 KEY FINDINGS:\n   • Women had 3.9x higher survival rate than men\n     - Female survival: 74.2%\n     - Male survival: 19.0%\n   • 1st class passengers had 2.6x higher survival rate than 3rd class\n     - 1st Class: 63.0%\n     - 3rd Class: 24.4%\n   • Children had 1.5x higher survival rate than adults\n     - Children (0-12): 54.4%\n     - Adults (18-60): 37.3%\n   • Small families had 1.9x higher survival rate than solo travelers\n     - Small Family (2-4): 57.9%\n     - Alone: 30.6%\n\n📈 STATISTICAL SIGNIFICANCE (Chi-square tests):\n   • Gender vs Survival: χ² = 258.39, p = 3.85e-58 ✓ Significant\n   • Class vs Survival: χ² = 101.22, p = 1.05e-22 ✓ Significant\n\n📋 SURVIVAL RATE SUMMARY TABLE:\n",
+                  "type": "text"
+                },
+                {
+                  "data": {
+                    "data": [
+                      [
+                        "Female",
+                        "314",
+                        "0.742"
+                      ],
+                      [
+                        "1st Class",
+                        "216",
+                        "0.630"
+                      ],
+                      [
+                        "Small Family",
+                        "292",
+                        "0.579"
+                      ],
+                      [
+                        "Children",
+                        "79",
+                        "0.544"
+                      ],
+                      [
+                        "2nd Class",
+                        "184",
+                        "0.473"
+                      ],
+                      [
+                        "Teens",
+                        "87",
+                        "0.402"
+                      ],
+                      [
+                        "Overall",
+                        "887",
+                        "0.386"
+                      ],
+                      [
+                        "Adults",
+                        "695",
+                        "0.373"
+                      ],
+                      [
+                        "Alone",
+                        "533",
+                        "0.306"
+                      ],
+                      [
+                        "3rd Class",
+                        "487",
+                        "0.244"
+                      ],
+                      [
+                        "Seniors",
+                        "26",
+                        "0.192"
+                      ],
+                      [
+                        "Male",
+                        "573",
+                        "0.190"
+                      ],
+                      [
+                        "Large Family",
+                        "62",
+                        "0.161"
+                      ]
+                    ],
+                    "columns": [
+                      "Factor",
+                      "Count",
+                      "Survival_Rate"
+                    ]
+                  },
+                  "type": "table"
+                },
+                {
+                  "data": "\n💾 Analysis saved to outputs folder!\n   • Charts: survival_analysis.png, advanced_analysis.png\n   • Data: titanic_survival_summary.csv\n",
+                  "type": "text"
+                }
+              ],
+              "metadata": {
+                "code": "# Statistical tests and key insights\nfrom scipy.stats import chi2_contingency\n\nprint(\"🚢 TITANIC SURVIVAL ANALYSIS - KEY INSIGHTS\")\nprint(\"=\" * 60)\n\n# Overall statistics\ntotal_passengers = len(df)\nsurvivors = df['Survived'].sum()\nsurvival_rate = df['Survived'].mean()\n\nprint(f\"📊 OVERALL STATISTICS:\")\nprint(f\"   • Total Passengers: {total_passengers:,}\")\nprint(f\"   • Survivors: {survivors:,} ({survival_rate:.1%})\")\nprint(f\"   • Deaths: {total_passengers - survivors:,} ({1-survival_rate:.1%})\")\n\nprint(f\"\\n🔍 KEY FINDINGS:\")\n\n# Gender analysis\nfemale_survival = df[df['Sex'] == 'female']['Survived'].mean()\nmale_survival = df[df['Sex'] == 'male']['Survived'].mean()\nprint(f\"   • Women had {female_survival/male_survival:.1f}x higher survival rate than men\")\nprint(f\"     - Female survival: {female_survival:.1%}\")\nprint(f\"     - Male survival: {male_survival:.1%}\")\n\n# Class analysis\nclass_1_survival = df[df['Pclass'] == 1]['Survived'].mean()\nclass_3_survival = df[df['Pclass'] == 3]['Survived'].mean()\nprint(f\"   • 1st class passengers had {class_1_survival/class_3_survival:.1f}x higher survival rate than 3rd class\")\nprint(f\"     - 1st Class: {class_1_survival:.1%}\")\nprint(f\"     - 3rd Class: {class_3_survival:.1%}\")\n\n# Age analysis\nchild_survival = df[df['Age_Category'] == 'Child']['Survived'].mean()\nadult_survival = df[df['Age_Category'] == 'Adult']['Survived'].mean()\nprint(f\"   • Children had {child_survival/adult_survival:.1f}x higher survival rate than adults\")\nprint(f\"     - Children (0-12): {child_survival:.1%}\")\nprint(f\"     - Adults (18-60): {adult_survival:.1%}\")\n\n# Family size analysis\nsmall_family_survival = df[df['Family_Category'] == 'Small Family']['Survived'].mean()\nalone_survival = df[df['Family_Category'] == 'Alone']['Survived'].mean()\nprint(f\"   • Small families had {small_family_survival/alone_survival:.1f}x higher survival rate than solo travelers\")\nprint(f\"     - Small Family (2-4): {small_family_survival:.1%}\")\nprint(f\"     - Alone: {alone_survival:.1%}\")\n\n# Statistical significance tests\nprint(f\"\\n📈 STATISTICAL SIGNIFICANCE (Chi-square tests):\")\n\n# Gender vs Survival\nchi2_gender, p_gender, _, _ = chi2_contingency(pd.crosstab(df['Sex'], df['Survived']))\nprint(f\"   • Gender vs Survival: χ² = {chi2_gender:.2f}, p = {p_gender:.2e} {'✓ Significant' if p_gender \u003c 0.05 else '✗ Not significant'}\")\n\n# Class vs Survival\nchi2_class, p_class, _, _ = chi2_contingency(pd.crosstab(df['Pclass'], df['Survived']))\nprint(f\"   • Class vs Survival: χ² = {chi2_class:.2f}, p = {p_class:.2e} {'✓ Significant' if p_class \u003c 0.05 else '✗ Not significant'}\")\n\n# Create summary table\nprint(f\"\\n📋 SURVIVAL RATE SUMMARY TABLE:\")\nsummary_data = {\n    'Factor': ['Overall', 'Female', 'Male', '1st Class', '2nd Class', '3rd Class', \n               'Children', 'Teens', 'Adults', 'Seniors', 'Alone', 'Small Family', 'Large Family'],\n    'Count': [len(df), len(df[df['Sex']=='female']), len(df[df['Sex']=='male']),\n              len(df[df['Pclass']==1]), len(df[df['Pclass']==2]), len(df[df['Pclass']==3]),\n              len(df[df['Age_Category']=='Child']), len(df[df['Age_Category']=='Teen']), \n              len(df[df['Age_Category']=='Adult']), len(df[df['Age_Category']=='Senior']),\n              len(df[df['Family_Category']=='Alone']), len(df[df['Family_Category']=='Small Family']), \n              len(df[df['Family_Category']=='Large Family'])],\n    'Survival_Rate': [df['Survived'].mean(), df[df['Sex']=='female']['Survived'].mean(), \n                      df[df['Sex']=='male']['Survived'].mean(), df[df['Pclass']==1]['Survived'].mean(),\n                      df[df['Pclass']==2]['Survived'].mean(), df[df['Pclass']==3]['Survived'].mean(),\n                      df[df['Age_Category']=='Child']['Survived'].mean(), df[df['Age_Category']=='Teen']['Survived'].mean(),\n                      df[df['Age_Category']=='Adult']['Survived'].mean(), df[df['Age_Category']=='Senior']['Survived'].mean(),\n                      df[df['Family_Category']=='Alone']['Survived'].mean(), df[df['Family_Category']=='Small Family']['Survived'].mean(),\n                      df[df['Family_Category']=='Large Family']['Survived'].mean()]\n}\n\nsummary_df = pd.DataFrame(summary_data)\nsummary_df['Survival_Rate'] = summary_df['Survival_Rate'].round(3)\nsummary_df = summary_df.sort_values('Survival_Rate', ascending=False)\n\ndisplay(summary_df)\n\n# Save summary to file\nsummary_df.to_csv('./outputs/titanic_survival_summary.csv', index=False)\nprint(f\"\\n💾 Analysis saved to outputs folder!\")\nprint(f\"   • Charts: survival_analysis.png, advanced_analysis.png\")\nprint(f\"   • Data: titanic_survival_summary.csv\")",
+                "cell_index": -1,
+                "notebook_path": "project-demos/Titanic Survival Analysis/main.ipynb",
+                "original_code": null,
+                "execution_count": 0,
+                "link_tool_call_id": "tooluse_HsSmXOhf2AoP9Vz0KFHU5j_annotation",
+                "output_folder_path": "project-demos/Titanic Survival Analysis/outputs",
+                "programing_language": "Python"
+              }
+            }
+          }
+        },
+        {
+          "type": "text",
+          "text": "## 🚢 Titanic Survival Analysis Complete!\n\nI've conducted a comprehensive and interesting analysis of the Titanic dataset with several fascinating insights:\n\n### 🔍 **Key Discoveries:**\n\n1. **Gender was the strongest survival predictor** - Women had a **3.9x higher survival rate** (74.2%) than men (19.0%)\n\n2. **Social class mattered significantly** - 1st class passengers had **2.6x better survival odds** (63.0%) compared to 3rd class (24.4%)\n\n3. **\"Women and children first\" was real** - Children had **1.5x higher survival rate** (54.4%) than adults (37.3%)\n\n4. **Family size was crucial** - Small families (2-4 people) had **1.9x better survival** (57.9%) than solo travelers (30.6%), but large families struggled (16.1%)\n\n5. **Age categories revealed patterns** - Seniors had the lowest survival rate (19.2%), while children fared best\n\n### 📊 **Statistical Validation:**\n- All major factors (gender, class) showed **statistically significant** relationships with survival (p \u003c 0.001)\n- Overall survival rate: **38.6%** (342 out of 887 passengers)\n\n### 🎨 **Visualizations Created:**\n- **Survival analysis charts** showing rates by gender, class, age, and fare\n- **Advanced heatmaps** revealing gender-class interactions\n- **Family size analysis** with interesting survival patterns\n- **Age vs Fare scatter plot** colored by survival status\n\n### 💾 **Files Generated:**\n- `survival_analysis.png` - Main survival factor charts\n- `advanced_analysis.png` - Complex relationship visualizations  \n- `titanic_survival_summary.csv` - Complete statistical summary\n\nThe analysis reveals that survival on the Titanic was heavily influenced by social factors (gender, class) and family dynamics, providing a data-driven view of this historic tragedy!"
+        }
+      ],
+      "metadata": {
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 140643,
+          "completion_tokens": 12124
+        }
+      }
+    },
+    {
+      "role": "user",
+      "content": "Analyze the Titanic passenger data in ./titanic.csv and provide a visual breakdown of survival trends.",
+      "parts": null,
+      "metadata": {
+        "finish_reason": "",
+        "usage": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        }
+      }
+    }
+  ]
