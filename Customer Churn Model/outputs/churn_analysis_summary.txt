@@ -1,0 +1,19 @@
+
+Customer Churn Prediction Analysis Summary
+==========================================
+
+Dataset: 10,000 customers, 20.37% churn rate
+
+Key Insights:
+- Germany has highest churn rate: 32.44%
+- Female customers churn more: 25.07%
+- Churned customers are older on average: 44.8 vs 37.4 years
+
+Best Model: Random Forest (AUC: 0.8464)
+
+Top Predictive Features:
+- Age: 0.240
+- EstimatedSalary: 0.147
+- CreditScore: 0.144
+- Balance: 0.141
+- NumOfProducts: 0.129
